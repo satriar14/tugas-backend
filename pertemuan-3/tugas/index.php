@@ -49,23 +49,23 @@ class Animal
 
 # membuat object
 # kirimkan data hewan (array) ke constructor
-$animal = new Animal(['kodok', 'keong', 'kelinci']);
+$animal = new Animal(['Kuda', 'Kambing', 'Kancil']);
 
-echo "Index - Menampilkan seluruh hewan " . PHP_EOL;
+echo "Index - Menampilkan Seluruh Hewan " . PHP_EOL;
 $animal->index();
 echo PHP_EOL;
 
-echo "Store - Menambahkan hewan baru " . PHP_EOL;
-$animal->store('burung');
+echo "Store - Menambahkan Hewan Baru " . PHP_EOL;
+$animal->store('Bebek');
 $animal->index();
 echo PHP_EOL;
 
-echo "Update - Mengupdate hewan " . PHP_EOL;
-$animal->update(0, 'Kucing Anggora');
+echo "Update - Mengupdate Hewan " . PHP_EOL;
+$animal->update(0, 'Burung Hantu');
 $animal->index();
 echo PHP_EOL;
 
-echo "Destroy - Menghapus hewan " . PHP_EOL;
+echo "Destroy - Menghapus Hewan " . PHP_EOL;
 $animal->destroy(1);
 $animal->index();
 echo PHP_EOL;

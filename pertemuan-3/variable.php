@@ -1,7 +1,7 @@
 <?php
 
 //Variable
-$nama = "Asnur";
+$nama = "Satria Ramadhan";
 $jurusan = "Informatika";
 
 //Panggil

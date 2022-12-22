@@ -1,74 +1,45 @@
-// TODO 3: Import data students dari folder data/students.js
-import students from "../data/students.js";
-import uniqid from "uniqid";
+const router = require("../routes/api");
 
-// Membuat Class StudentController
 class StudentController {
-  index(req, res) {
-    // TODO 4: Tampilkan data students
-    const data = {
-      message: "Menampilkkan semua students",
-      data: students,
-    };
+    index(req, res){
+        const data = {
+            message : "Menampilkan data student",
+        };
+        res.json(data);
+    }
 
-    res.json(data);
-  }
+    store(req, res){
+        const {nama} = req.body;
 
-  store(req, res) {
-    const { name } = req.body;
+        const data = {
+            message : `menambahkan data students ${nama}`,
+        };
+        res.json(data);
+    }
 
-    console.log(name);
-    // TODO 5: Tambahkan data students
-    let new_data = {
-      id: uniqid(),
-      name: name,
-    };
+    update(req, res){
+        const {id} = req.params;
+        const {nama} = req.body;
 
-    students.push(new_data);
+        const data = {
+            message : `mengedit data students ${nama} dengan id ${id}`,
+        };
+        res.json(data);
+    }
 
-    const data = {
-      message: `Menambahkan data student: ${name}`,
-      data: students,
-    };
-
-    res.json(data);
-  }
-
-  update(req, res) {
-    const { id } = req.params;
-    const { name } = req.body;
-
-    // TODO 6: Update data students
-    students.find((student) => student.id == id).name = name;
-
-    const data = {
-      message: `Mengedit student id ${id}, nama ${name}`,
-      data: students,
-    };
-
-    res.json(data);
-  }
-
-  destroy(req, res) {
-    const { id } = req.params;
-
-    // TODO 7: Hapus data students
-    students.splice(
-      students.findIndex((student) => student.id === id),
-      1
-    );
-
-    const data = {
-      message: `Menghapus student id ${id}`,
-      data: students,
-    };
-
-    res.json(data);
-  }
+    destroy(req, res){
+        const {id} = req.params;
+        const {nama} = req.body
+        
+        const data = {
+            message : `menghapus data students ${nama} dengan id ${id}`,
+        };
+        res.json(data);    
+    }
 }
 
-// Membuat object StudentController
+// Buat object student controller
 const object = new StudentController();
 
-// Export object StudentController
-export default object;
+// export object
+module.exports = object;

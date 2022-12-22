@@ -1,14 +1,19 @@
-import express from "express";
-import router from "./routes/api.js";
+// Import express
+const express = require("express");
 
+// Buat object express
 const app = express();
 
-//Middleware
+// menggunakan middleware
 app.use(express.json());
-app.use(express.urlencoded());
 
-app.use("/api", router);
+// definisikan route
+const router = require("./routes/api");
+app.use(router);
 
+
+
+// Definisikan port
 app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+    console.log("server running at http://localhost:3000")
 });

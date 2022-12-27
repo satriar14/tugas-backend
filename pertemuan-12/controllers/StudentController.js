@@ -12,8 +12,7 @@ class StudentController {
             data: students,
         };
         res.json(data);
-        res.status(200).json(data);
-    }
+    };
 
     async store(req, res){
         const {nama} = req.body;
@@ -32,25 +31,36 @@ class StudentController {
         res.json(data);
     };
 
-    update(req, res){
+    async update(req, res) {
+        const { id } = req.params;
+        const { nama } = req.body;
+    
+        // Update data students
+        let student = {
+          nama: nama,
+        };
+    
+        const students = await Student.update(id, student);
+    
+        const data = {
+          message: `Mengedit student id ${id}, nama ${nama}`,
+          data: students,
+        };
+    
+        res.json(data);
+      };
+
+    async destroy(req, res){
         const {id} = req.params;
         const {nama} = req.body;
 
-        const data = {
-            message : `mengedit data students ${nama} dengan id ${id}`,
-        };
-        res.json(data);
-    }
-
-    destroy(req, res){
-        const {id} = req.params;
-        const {nama} = req.body
+        const students = await Student.destroy(id);
         
         const data = {
             message : `menghapus data students ${nama} dengan id ${id}`,
         };
-        res.json(data);    
-    }
+        res.json(data); 
+    };
 }
 
 // Buat object student controller

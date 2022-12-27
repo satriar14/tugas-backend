@@ -17,8 +17,28 @@ class Student {
     static create(data) {
         return new Promise((resolve, reject) => {
             const query = "INSERT INTO students SET ?";
-            db.query(sql, data, (err, results) => {
+            db.query(query, data, (err, results) => {
                 resolve(results);
+            });
+        });
+    }
+
+     // Update Student
+    static update(id, data) {
+        return new Promise((resolve, reject) => {
+        const query = `UPDATE students SET ?`;
+            db.query(query, data, (err, results) => {
+                resolve(results);
+            });
+        });
+    }
+
+    // delete student
+    static destroy(id){
+        return new Promise((resolve, reject) => {
+            const query = `DELETE FROM students WHERE od = '${id}'`;
+            db.query (query, (err, results) => {
+                resolve(results)
             });
         });
     }
